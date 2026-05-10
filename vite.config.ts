@@ -5,7 +5,7 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     tsConfigPaths(),
     tanstackStart({
@@ -13,6 +13,7 @@ export default defineConfig({
     }),
     react(),
     tailwindcss(),
-    cloudflare(),
+    // cloudflare() cria um Worker environment que conflita com o servidor de dev do TanStack Start
+    ...(command === "build" ? [cloudflare()] : []),
   ],
-});
+}));
