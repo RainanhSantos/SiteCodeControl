@@ -9,7 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { SiteHeader, SiteFooter } from "@/components/site-chrome";
+import { SiteHeader } from "@/components/layout/header";
+import { SiteFooter } from "@/components/layout/footer";
 
 function NotFoundComponent() {
   return (
